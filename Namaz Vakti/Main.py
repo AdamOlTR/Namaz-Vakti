@@ -6,8 +6,7 @@ required_packages = [
     'requests',
     'beautifulsoup4',
     'pandas',
-    'colored',
-    'xdotool'
+    'colored'
 ]
 
 # Funktion zur Installation von Paketen
@@ -20,7 +19,7 @@ for package in required_packages:
         __import__(package)
     except ImportError:
         install_package(package)
-        
+
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
