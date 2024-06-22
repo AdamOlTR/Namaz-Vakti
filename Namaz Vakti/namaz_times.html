@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Namaz Vakti</title>
+    <link rel="icon" type="image/svg+xml" href="https://upload.wikimedia.org/wikipedia/de/6/62/DITIB-Logo.svg">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Camlica-2018-06-14.jpg/1024px-Camlica-2018-06-14.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #444;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .refresh-button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .refresh-button:hover {
+            background-color: #45a049;
+        }
+        #timer {
+            font-size: 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Namaz Vakti</h1>
+        <div id="namaz-times">
+            <!-- start of namaz times --><table class="dataframe dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Miladi Tarih</th>
+      <th>İmsak</th>
+      <th>Güneş</th>
+      <th>Öğle</th>
+      <th>İkindi</th>
+      <th>Akşam</th>
+      <th>Yatsı</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>22 Haziran 2024 Cumartesi</td>
+      <td>03:42</td>
+      <td>05:06</td>
+      <td>13:37</td>
+      <td>17:59</td>
+      <td>21:58</td>
+      <td>23:13</td>
+    </tr>
+  </tbody>
+</table><!-- end of namaz times -->
+        </div>
+        <div id="timer">
+            Ezana Kalan Süre: <span id="next-prayer-time" data-time="2024-06-22T21:58:00"></span>
+        </div>
+        <button class="refresh-button" onclick="location.reload()">Refresh</button>
+    </div>
+    <script>
+        function updateTimer() {
+            const timerElement = document.getElementById('next-prayer-time');
+            let nextPrayerTime = new Date(timerElement.getAttribute('data-time'));
+            const now = new Date();
+            let timeDiff = nextPrayerTime - now;
+
+            console.log("Next Prayer Time: ", nextPrayerTime);
+            console.log("Current Time: ", now);
+            console.log("Time Difference: ", timeDiff);
+
+            if (timeDiff > 0) {
+                const hours = Math.floor(timeDiff / (1000 * 60 * 60));
+                const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+                timerElement.innerHTML = `${hours} saat, ${minutes} dakika, ${seconds} saniye`;
+            } else {
+                timerElement.innerHTML = "Time for next prayer has passed. Refresh to update.";
+                
+                // Find the next prayer time
+                const times = [
+                    "2024-06-22T03:42:00",
+                    "2024-06-22T05:06:00",
+                    "2024-06-22T13:37:00",
+                    "2024-06-22T17:59:00",
+                    "2024-06-22T21:58:00",
+                    "2024-06-22T23:13:00"
+                ];
+
+                for (let i = 0; i < times.length; i++) {
+                    nextPrayerTime = new Date(times[i]);
+                    if (nextPrayerTime > now) {
+                        timerElement.setAttribute('data-time', times[i]);
+                        break;
+                    }
+                }
+            }
+        }
+
+        function startTimer() {
+            updateTimer();
+            setInterval(updateTimer, 1000);
+        }
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+            startTimer();
+        });
+    </script>
+</body>
+</html>
