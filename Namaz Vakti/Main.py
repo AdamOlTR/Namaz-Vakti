@@ -1,3 +1,26 @@
+import subprocess
+import sys
+
+# Liste der erforderlichen Pakete
+required_packages = [
+    'requests',
+    'beautifulsoup4',
+    'pandas',
+    'colored',
+    'xdotool'
+]
+
+# Funktion zur Installation von Paketen
+def install_package(package):
+    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+
+# Installation der Pakete, falls sie nicht vorhanden sind
+for package in required_packages:
+    try:
+        __import__(package)
+    except ImportError:
+        install_package(package)
+        
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
@@ -11,7 +34,7 @@ from colored import fg, attr  # Importing colored module for colored output
 # Program to scrape Namaz times from the Diyanet website and display them in a browser
 try:
     # URL for Dortmund on the Diyanet website
-    full_url = "https://namazvakitleri.diyanet.gov.tr/tr-TR/11006/dortmund-icin-namaz-vakti"
+    full_url = "https://namazvakitleri.diyanet.gov.tr/tr-TR/10922/oberaden-icin-namaz-vakti"
 
     # Function to scrape Namaz times from the given URL
     def scrape_namaz_times(url):
