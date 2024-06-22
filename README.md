@@ -9,6 +9,7 @@ bash
 Code kopieren
 chmod +x /home/tugay/Namaz-Vakti/start_script.sh
 chmod +x /home/tugay/Namaz-Vakti/Namaz\ Vakti/Main.py
+
 Crontab bearbeiten:
 Öffnen Sie die Crontab-Konfiguration, um einen Cron-Job zu erstellen, der das Skript beim Booten ausführt:
 
