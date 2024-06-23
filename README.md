@@ -44,5 +44,5 @@ Zusätzliche Hinweise:
 Überprüfen Sie den Status: Nach dem Neustart können Sie sich anmelden und überprüfen, ob Ihr Python-Skript und Chromium im Kiosk-Modus ausgeführt werden.
 Fehlerbehebung: Wenn das Skript nicht wie erwartet ausgeführt wird, überprüfen Sie die Systemprotokolle mit dmesg oder journalctl, um Fehler zu identifizieren.
 Diese Schritte sollten sicherstellen, dass Ihr Skript beim Start des Raspberry Pi automatisch ausgeführt wird.
-#WICHTIG Nach einem Reboot Chromium entfernen!
+#WICHTIG vor einem Reboot Chromium entfernen!
 sudo apt-get remove chromium-browser
