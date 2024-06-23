@@ -1,3 +1,5 @@
+https://github.com/AdamOlTR/Namaz-Vakti.git
+
 Schritt-für-Schritt-Anleitung:
 Öffnen Sie das Terminal:
 Melden Sie sich bei Ihrem Raspberry Pi an und öffnen Sie ein Terminalfenster.
