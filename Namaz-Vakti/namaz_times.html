@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Namaz Vakti</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Camlica-2018-06-14.jpg/1024px-Camlica-2018-06-14.jpg');
+            background-size: cover;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #444;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .refresh-button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .refresh-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Namaz Vakti</h1>
+        <div id="namaz-times">
+            <!-- start of namaz times -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>Gebet</th>
+                        <th>Zeit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Imsak</td>
+                        <td id="imsak">-</td>
+                    </tr>
+                    <tr>
+                        <td>Güneş</td>
+                        <td id="gunes">-</td>
+                    </tr>
+                    <tr>
+                        <td>Öğle</td>
+                        <td id="ogle">-</td>
+                    </tr>
+                    <tr>
+                        <td>İkindi</td>
+                        <td id="ikindi">-</td>
+                    </tr>
+                    <tr>
+                        <td>Akşam</td>
+                        <td id="aksam">-</td>
+                    </tr>
+                    <tr>
+                        <td>Yatsı</td>
+                        <td id="yatsi">-</td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- end of namaz times -->
+        </div>
+        <button class="refresh-button" onclick="location.reload()">Yenile</button>
+    </div>
+</body>
+</html>
